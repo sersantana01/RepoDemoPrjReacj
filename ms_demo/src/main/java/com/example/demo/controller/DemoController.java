@@ -14,30 +14,32 @@ import com.example.demo.exception.DemoException;
 import com.example.demo.service.DemoService;
 import com.example.demo.service.DemoServiceImpl;
 
+//Holaaa test github
+
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 public class DemoController {
-	
+
     @Autowired
 	DemoService demoService;
 
 	@RequestMapping(value="/getDirecciones", method=RequestMethod.GET, produces= MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> obtenerDireccion() {
-		
+
 		try {
 
 			String resultado = demoService.obtenerDireccion("");
 			return new ResponseEntity<String>(resultado, HttpStatus.OK);
-			
-		}catch(DemoException e) {	
+
+		}catch(DemoException e) {
 			e.printStackTrace();
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.NO_CONTENT);
-			
+
 		}catch(Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.NO_CONTENT);
 		}
-		
+
 	}
 
 }
