@@ -20,7 +20,7 @@ import com.example.demo.service.DemoService;
 import com.example.demo.service.DemoServiceImpl;
 import com.example.demo.service.MapValidarFormService;
 
-//Holaaa test github
+//Controllador de prueba 
 
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
@@ -28,7 +28,7 @@ public class DemoController {
 
     @Autowired
 	DemoService demoService;
-    
+
     @Autowired
     MapValidarFormService validarFormService;
 
@@ -36,17 +36,17 @@ public class DemoController {
 	public ResponseEntity<?> obtenerEvento(@Valid @RequestBody ParametrosDataDto parametrosDataDto,
 			                                       BindingResult result  ) {
 
-		
-			
+
+
 			ResponseEntity<?> errorMap = validarFormService.valdarFormService(result);
 			if(errorMap!=null) return errorMap;
-			
+
 			String resultado = demoService.obtenerEeventos(parametrosDataDto);
 			return new ResponseEntity<String>(resultado, HttpStatus.OK);
 
-		
-		
-	
+
+
+
 
 	}
 
