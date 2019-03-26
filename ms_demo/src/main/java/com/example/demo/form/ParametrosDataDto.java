@@ -1,13 +1,20 @@
-package com.example.demo.dto;
+package com.example.demo.form;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.constraints.NotEmpty;
 
 public class ParametrosDataDto {
 	
+	@NotEmpty
 	String nombrePaquete;
+	@NotEmpty
 	String nombreStoreProcedure;	
+	@NotEmpty
 	String nombreMs;
+	
+	
+	List<ParametrosDto> param;
 	
 	
 	
@@ -19,7 +26,7 @@ public class ParametrosDataDto {
 		this.nombreMs = nombreMs;
 	}
 
-	List<ParametrosDto> param;
+	
 	
 	
 	public ParametrosDataDto() {
@@ -46,7 +53,7 @@ public class ParametrosDataDto {
 		return param;
 	}
 
-	public void setParam(ArrayList<ParametrosDto> param) {
+	public void setParam(List<ParametrosDto> param) {
 		this.param = param;
 	}
 

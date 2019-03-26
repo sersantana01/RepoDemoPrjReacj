@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.exception.DemoException;
 import com.example.demo.form.EmpleadosForm;
+import com.example.demo.form.ParametrosDataDto;
 import com.example.demo.service.DemoService;
 import com.example.demo.service.DemoServiceImpl;
 import com.example.demo.service.MapValidarFormService;
@@ -31,8 +32,8 @@ public class DemoController {
     @Autowired
     MapValidarFormService validarFormService;
 
-	@RequestMapping(value="/getEmpleados", method=RequestMethod.GET, produces= MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<?> obtenerDireccion(@Valid @RequestBody EmpleadosForm empleadoForm,
+	@RequestMapping(value="/getEvento", method=RequestMethod.GET, produces= MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<?> obtenerEvento(@Valid @RequestBody ParametrosDataDto parametrosDataDto,
 			                                       BindingResult result  ) {
 
 		
@@ -40,7 +41,7 @@ public class DemoController {
 			ResponseEntity<?> errorMap = validarFormService.valdarFormService(result);
 			if(errorMap!=null) return errorMap;
 			
-			String resultado = demoService.obtenerDireccion(empleadoForm);
+			String resultado = demoService.obtenerEeventos(parametrosDataDto);
 			return new ResponseEntity<String>(resultado, HttpStatus.OK);
 
 		
