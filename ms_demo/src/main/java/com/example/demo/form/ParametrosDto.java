@@ -1,5 +1,8 @@
 package com.example.demo.form;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(description = "Bean para parametos opcional. ")
 public class ParametrosDto {
 	
 	String nombreParametro;

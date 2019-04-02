@@ -17,37 +17,23 @@ import org.springframework.web.client.RestTemplate;
 import com.example.demo.exception.DemoException;
 import com.example.demo.form.EmpleadosForm;
 import com.example.demo.form.ParametrosDataDto;
+import com.example.demo.repository.RepositoryServiceDO;
 import com.google.gson.Gson;
 
 
 @Service
 public class DemoServiceImpl implements DemoService {
+	
+	@Autowired
+	RepositoryServiceDO repositoryServiceDO;
 
 	
-	@Autowired	
-	@LoadBalanced
-	private RestTemplate restTemplate;
-	
+
 
 	@Override
 	public String obtenerEeventos(ParametrosDataDto parametrosDataDto )  {
-		
-		
-			
-	
-	
-		
-		HttpHeaders headers = new HttpHeaders();
-	      headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-	     
-	      
-	      Gson gson=new Gson();
-	      
-	       
-	   ResponseEntity<String> response = restTemplate.postForEntity("http://MS-DATA-Q/solicitarDatosDataSO",  gson.toJson(parametrosDataDto) ,   String.class) ;
-
-		
-	  return response.getBody();
+				
+		return repositoryServiceDO.obtenerEventoData(parametrosDataDto);
 	}
 	
 

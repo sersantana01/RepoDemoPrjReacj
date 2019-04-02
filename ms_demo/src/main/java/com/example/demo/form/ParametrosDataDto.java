@@ -2,15 +2,32 @@ package com.example.demo.form;
 
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "All details about the ParametrosDataDto. ")
 public class ParametrosDataDto {
 	
+	@ApiModelProperty(notes = "Nombre del paquete")
 	@NotEmpty
+	@NotBlank
+	@NotNull
 	String nombrePaquete;
+	
+	@ApiModelProperty(notes = "nombre del store procedure")
 	@NotEmpty
-	String nombreStoreProcedure;	
+	@NotBlank
+	@NotNull
+	String nombreStoreProcedure;
+	
+	@ApiModelProperty(notes = "Nombre del microservicio")
 	@NotEmpty
+	@NotBlank
+	@NotNull
 	String nombreMs;
 	
 	
