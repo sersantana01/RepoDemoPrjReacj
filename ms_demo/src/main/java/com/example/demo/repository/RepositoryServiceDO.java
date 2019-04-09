@@ -32,6 +32,13 @@ public class  RepositoryServiceDO{
 
 	
 	
+	public String operacionInformacion(ParametrosDataDto parametrosDataDto) {
+		
+		return operacionData(parametrosDataDto);
+		
+	}
+	
+	
 	
 	 private String obtenerInformacionOracleORDS(ParametrosDataDto parametrosDataDto  ){
 		 
@@ -43,6 +50,22 @@ public class  RepositoryServiceDO{
 	      
 	       
 	   ResponseEntity<String> response = restTemplate.postForEntity("http://MS-DATA-Q/solicitarDatosDataSO",  gson.toJson(parametrosDataDto) ,   String.class) ;
+
+	   return response.getBody();
+	 }
+	 
+	 
+
+	 private String  operacionData(ParametrosDataDto parametrosDataDto  ){
+		 
+		 HttpHeaders headers = new HttpHeaders();
+	      headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+	     
+	      
+	      Gson gson=new Gson();
+	      
+	       
+	   ResponseEntity<String> response = restTemplate.postForEntity("http://MS-DATA-CQ/operacionData",  gson.toJson(parametrosDataDto) ,   String.class) ;
 
 	   return response.getBody();
 	 }

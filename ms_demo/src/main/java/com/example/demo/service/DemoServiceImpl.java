@@ -34,8 +34,19 @@ public class DemoServiceImpl implements DemoService {
 	public String obtenerEeventos(ParametrosDataDto parametrosDataDto )  {
 				
 		return repositoryServiceDO.obtenerEventoData(parametrosDataDto);
+		
+		
 	}
 	
+	
+
+	@Override
+	public String operacionInformacion(ParametrosDataDto parametrosDataDto )  {
+				
+		return repositoryServiceDO.operacionInformacion(parametrosDataDto);
+		
+		
+	}
 
 	
 	

@@ -8,4 +8,5 @@ public interface DemoService {
 	
 	public String obtenerEeventos(ParametrosDataDto parametrosDataDto )  ;
 
+	public String operacionInformacion(ParametrosDataDto parametrosDataDto );
 }

@@ -31,9 +31,10 @@ import io.swagger.annotations.ApiResponses;
 
 //Controllador de prueba 
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+//@CrossOrigin(origins = { "http://localhost:4200" })
 @Api(value="Eventos", description="Obtiene eventos del operador.")
 @RestController(value="Eventos")
+@RequestMapping("/demo")
 public class DemoController {
 
     @Autowired
@@ -70,5 +71,26 @@ public class DemoController {
 
 
 	}
+    
+    
+    @ApiOperation(value = "Obtener informacion de eventos")
+ 	@PostMapping("/operacionData")
+ 	public ResponseEntity<?> operacionInformacion(@ApiParam(value = "Json de parametros para obtener informacion de Eventos", required = true)
+ 	                                       @Valid @RequestBody ParametrosDataDto parametrosDataDto,
+ 			                               BindingResult result  ) {
+ 		
+ 			ResponseEntity<?> errorMap = validarFormService.valdarFormService(result);
+ 			if(errorMap!=null) return errorMap;
+
+ 			String resultado = demoService.operacionInformacion(parametrosDataDto);
+ 			return new ResponseEntity<String>(resultado, HttpStatus.OK);
+
+
+
+
+
+ 	}
+    
+    
 
 }
